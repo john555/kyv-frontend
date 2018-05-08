@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-size: 62.5%;
+  background: #f5f5f5;
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
   color: #353535;
   margin: 0;

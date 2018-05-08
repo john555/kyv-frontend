@@ -1,0 +1,44 @@
+.profileDisplay {
+  position: relative;
+}
+
+.profileDisplay__icon {
+  width: 5rem;
+  height: 5rem;
+  background-color: $primaryColor;
+  border-radius: 50%;
+  border: none;
+}
+
+.profileDisplay__dropdown {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  font-size: 1.4rem;
+}
+
+.profileDisplay__dropdown {
+  display: none;
+  width: 18rem;
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
+}
+
+.profileDisplay__dropdown--active {
+  display: block;
+}
+
+.profileDisplay__dropdownItem {
+  font: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0;
+}
+
+.profileDisplay__dropdownItem--big {
+  font-size: 1.2em;
+}
