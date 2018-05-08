@@ -1,0 +1,25 @@
+.visitorLog {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.visitorLog__info {
+  padding: 1.8rem  2rem;
+}
+
+.visitorLog__header {
+  text-align: left;
+}
+
+.visitorLog__log {
+
+}
+
+.visitorLog__log:nth-child(odd) {
+  background: #eee;
+}
+
+.visitorLog__info:last-child {
+  text-align: right;
+}
