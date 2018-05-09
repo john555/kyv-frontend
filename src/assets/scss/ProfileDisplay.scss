@@ -5,9 +5,11 @@
 .profileDisplay__icon {
   width: 5rem;
   height: 5rem;
-  background-color: $primaryColor;
+  background-color: $secondaryColor;
   border-radius: 50%;
   border: none;
+  font: inherit;
+  color: white;
 }
 
 .profileDisplay__dropdown {

@@ -6,7 +6,9 @@ const ProfileDisplay = props => (
     <button
       className="profileDisplay__icon"
       onClick={props.toggleDropdown}
-    />
+    >
+      j
+    </button>
     <div className={`profileDisplay__dropdown ${props.active ? 'profileDisplay__dropdown--active' : ''}`}>
       <div className="profileDisplay__dropdownItem profileDisplay__dropdownItem--big">Jane Doe</div>
       <button className="profileDisplay__dropdownItem">Sign out</button>

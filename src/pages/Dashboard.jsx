@@ -5,6 +5,7 @@ import PageHeader from '../components/common/PageHeader';
 import VisitorLog from '../components/VisitorLog';
 import visitorLogs from '../fixture';
 import Modal from '../components/common/Modal';
+import VisitorDetails from '../components/VisitorDetails';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Dashboard extends Component {
           active={this.state.showModal}
           closeModal={this.hideModal}
         >
-          <h1>Visitor Details</h1>
+          <VisitorDetails closeModal={this.hideModal} />
         </Modal>
       </Fragment>
     );
