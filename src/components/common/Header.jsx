@@ -6,7 +6,7 @@ import ProfileDisplay from './ProfileDisplay';
 const Header = () => (
   <header className="mainHeader">
     <Container>
-      <Link to="/" className="mainHeader__logoWrapper">VMS</Link>
+      <Link to="/" className="mainHeader__logoWrapper">Kyv</Link>
       <div>
         <ProfileDisplay />
       </div>
