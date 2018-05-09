@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const renderLogs = logs => logs.map(log => (
-  <tr className="visitorLog__log" key={log.id}>
+const renderLogs = (logs, onItemClick) => logs.map(log => (
+  <tr
+    key={log.id}
+    className="visitorLog__log"
+    onClick={onItemClick}
+  >
     <td className="visitorLog__info">{log.cardNumber}</td>
     <td className="visitorLog__info">{log.visitorName}</td>
     <td className="visitorLog__info">{log.hostName}</td>
@@ -23,10 +27,14 @@ const VisitorLog = props => (
       </tr>
     </thead>
     <tbody className="visitorLog__logs">
-      {renderLogs(props.logs)}
+      {renderLogs(props.logs, props.onItemClick)}
     </tbody>
   </table>
 );
+
+VisitorLog.defaultProps = {
+  onItemClick: () => {},
+};
 
 VisitorLog.propTypes = {
   logs: PropTypes.arrayOf(PropTypes.shape({
@@ -37,6 +45,7 @@ VisitorLog.propTypes = {
     timeIn: PropTypes.string.isRequired,
     timeOut: PropTypes.string.isRequired,
   })).isRequired,
+  onItemClick: PropTypes.func,
 };
 
 export default VisitorLog;

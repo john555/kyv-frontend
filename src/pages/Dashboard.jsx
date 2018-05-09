@@ -11,17 +11,32 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       visitorLogs,
+      showModal: false,
     };
   }
+
+  showModal = () => {
+    document.body.classList.add('no-scroll');
+    this.setState({ showModal: true });
+  }
+
+  hideModal = () => {
+    document.body.classList.remove('no-scroll');
+    this.setState({ showModal: false });
+  }
+
   render() {
     return (
       <Fragment>
         <Header />
         <PageContent>
           <PageHeader title="Visitor Logs." />
-          <VisitorLog logs={this.state.visitorLogs} />
+          <VisitorLog logs={this.state.visitorLogs} onItemClick={this.showModal} />
         </PageContent>
-        <Modal>
+        <Modal
+          active={this.state.showModal}
+          closeModal={this.hideModal}
+        >
           <h1>Visitor Details</h1>
         </Modal>
       </Fragment>
