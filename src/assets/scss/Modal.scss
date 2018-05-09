@@ -12,6 +12,8 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  overflow: auto;
+  padding-bottom: 4rem;
 }
 
 .modal--active {

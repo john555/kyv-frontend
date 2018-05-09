@@ -1,0 +1,77 @@
+.visitorLogForm {
+  width: 55rem;
+  padding: 2rem 2rem 4rem;
+}
+
+.visitorLogForm__heading {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.visitorLogForm__content {
+  padding: 3rem 0 6rem;
+}
+
+.visitorLogForm__field {
+  display: flex;
+
+  & ~ .visitorLogForm__field {
+    margin-top: 1.8rem;
+  }
+}
+
+.visitorLogForm__label {
+  flex-basis: 15rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.visitorLogForm__input {
+  flex-grow: 1;
+  padding: 1rem 1.8rem;
+  border-radius: 0.4rem;
+  border: 0.2rem solid transparent;
+  background: #eee;
+  font: inherit;
+  resize: none;
+
+  &:focus {
+    border-color: currentColor;
+    outline: none;
+  }
+}
+
+.visitorLogForm__signature {
+  display: block;
+  height: 6.6rem;
+}
+
+.visitorLogForm__options {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.visitorLogForm__button {
+  background: #eee;
+  border-radius: 0.4rem;
+  padding: 0.8rem 0;
+  width: 8.5rem;
+  font-size: 1.4rem;
+
+  & ~ .visitorLogForm__button {
+    margin-left: 2rem;
+  }
+}
+
+.visitorLogForm__signatureButton {
+  display: block;
+  border: 0.2rem dashed #ccc;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+
+  &:focus {
+    border-color: currentColor;
+    outline: none;
+  }
+}
