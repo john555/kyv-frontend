@@ -5,7 +5,9 @@
 }
 
 .visitorLog__info {
-  padding: 1.8rem  2rem;
+  padding: 0  2rem;
+  height: 6.5rem;
+  vertical-align: middle;
 }
 
 .visitorLog__header {
@@ -26,4 +28,14 @@
 
 .visitorLog__info:last-child {
   text-align: right;
+}
+
+.visitorLog__button {
+  border-radius: 0.4rem;
+  background: #ccc;
+
+  &:hover {
+    background: #333;
+    color: white;
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../components/common/Button';
 
 const renderLogs = (logs, onItemClick) => logs.map(log => (
   <tr
@@ -11,7 +12,9 @@ const renderLogs = (logs, onItemClick) => logs.map(log => (
     <td className="visitorLog__info">{log.visitorName}</td>
     <td className="visitorLog__info">{log.hostName}</td>
     <td className="visitorLog__info">10:03 AM</td>
-    <td className="visitorLog__info">--:--</td>
+    <td className="visitorLog__info">
+      <Button className="visitorLog__button">Sign out</Button>
+    </td>
   </tr>
 ));
 
