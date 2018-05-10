@@ -6,6 +6,8 @@ import VisitorLog from '../components/VisitorLog';
 import visitorLogs from '../fixture';
 import Modal from '../components/common/Modal';
 import VisitorLogForm from '../components/VisitorLogForm';
+import VisitorDetails from '../components/VisitorDetails';
+import FloatingButton from '../components/common/FloatingButton';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -13,7 +15,18 @@ class Dashboard extends Component {
     this.state = {
       visitorLogs,
       showModal: false,
+      showForm: false,
     };
+  }
+
+  onFABClick = () => {
+    this.setState({ showForm: true });
+    this.showModal();
+  };
+
+  onVisitorLogItemClick = () => {
+    this.setState({ showForm: false });
+    this.showModal();
   }
 
   showModal = () => {
@@ -26,20 +39,35 @@ class Dashboard extends Component {
     this.setState({ showModal: false });
   }
 
+  renderFAB = () => {
+    if (this.state.showModal) {
+      return '';
+    }
+    return <FloatingButton onClick={this.onFABClick} />;
+  }
+
+  renderModalContent = () => {
+    if (this.state.showForm) {
+      return <VisitorLogForm closeModal={this.hideModal} />;
+    }
+    return <VisitorDetails closeModal={this.hideModal} />;
+  };
+
   render() {
     return (
       <Fragment>
         <Header />
         <PageContent>
           <PageHeader title="Visitor Logs." />
-          <VisitorLog logs={this.state.visitorLogs} onItemClick={this.showModal} />
+          <VisitorLog logs={this.state.visitorLogs} onItemClick={this.onVisitorLogItemClick} />
         </PageContent>
         <Modal
           active={this.state.showModal}
           closeModal={this.hideModal}
         >
-          <VisitorLogForm closeModal={this.hideModal} />
+          {this.renderModalContent()}
         </Modal>
+        {this.renderFAB()}
       </Fragment>
     );
   }

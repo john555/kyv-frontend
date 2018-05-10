@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './common/Button';
+import DeleteButton from './common/DeleteButton';
 
 const VisitorDetails = props => (
   <section className="visitorDetails">
     <h1 className="visitorDetails__heading">Visitor Details</h1>
+    <div className="visitorDetails__topRight">
+      <DeleteButton onClick={() => {}} />
+    </div>
     <div className="visitorDetails__content">
       <div className="visitorDetails__contentGroup">
         <div className="visitorDetails__detail">

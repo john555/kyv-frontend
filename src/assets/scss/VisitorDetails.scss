@@ -1,7 +1,15 @@
 .visitorDetails {
+  position: relative;
   width: 70rem;
   padding: 1rem 1rem 4rem;
 }
+
+.visitorDetails__topRight {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+}
+
 
 .visitorDetails__heading {
   font-size: 2rem;

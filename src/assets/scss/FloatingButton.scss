@@ -1,0 +1,30 @@
+.floatingButton {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: #666;
+  position: fixed;
+  right: 6rem;
+  bottom: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.1rem 0.1rem 2rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(0.8);
+  transition: transform 0.2s ease-in-out;
+}
+
+.floatingButton__icon {
+  stroke-linecap: round;
+  fill: none;
+  stroke: white;
+  width: 70%;
+  stroke-width: 2;
+  
+}
+
+
+.floatingButton:hover {
+  transform: scale(1);
+}
