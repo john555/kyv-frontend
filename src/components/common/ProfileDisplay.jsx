@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const ProfileDisplay = props => (
   <div className="profileDisplay">
@@ -10,7 +11,7 @@ const ProfileDisplay = props => (
       j
     </button>
     <div className={`profileDisplay__dropdown ${props.active ? 'profileDisplay__dropdown--active' : ''}`}>
-      <div className="profileDisplay__dropdownItem profileDisplay__dropdownItem--big">Jane Doe</div>
+      <div className="profileDisplay__dropdownItem profileDisplay__dropdownItem--big">{props.fullName}</div>
       <button className="profileDisplay__dropdownItem">Sign out</button>
     </div>
   </div>
@@ -24,6 +25,11 @@ ProfileDisplay.defaultProps = {
 ProfileDisplay.propTypes = {
   active: PropTypes.bool,
   toggleDropdown: PropTypes.func,
+  fullName: PropTypes.string.isRequired,
 };
 
-export default ProfileDisplay;
+const mapStoreToProps = state => ({
+  fullName: state.userInfo.fullName,
+});
+
+export default connect(mapStoreToProps, null)(ProfileDisplay);

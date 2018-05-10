@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import Header from '../components/common/Header';
 import PageContent from '../components/common/PageContent';
 import PageHeader from '../components/common/PageHeader';
 import VisitorLog from '../components/VisitorLog';
-import visitorLogs from '../fixture';
 import Modal from '../components/common/Modal';
 import VisitorLogForm from '../components/VisitorLogForm';
 import VisitorDetails from '../components/VisitorDetails';
@@ -13,7 +13,6 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visitorLogs,
       showModal: false,
       showForm: false,
     };
@@ -59,7 +58,7 @@ class Dashboard extends Component {
         <Header />
         <PageContent>
           <PageHeader title="Visitor Logs." />
-          <VisitorLog logs={this.state.visitorLogs} onItemClick={this.onVisitorLogItemClick} />
+          <VisitorLog onItemClick={this.onVisitorLogItemClick} />
         </PageContent>
         <Modal
           active={this.state.showModal}
@@ -73,4 +72,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserDetails: () => dispatch(() => { /* fn that fetches user details :) */ }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

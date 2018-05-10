@@ -1,5 +1,5 @@
-# Nexporter web app
-
+# Kyv
+Kyv is a visitor records manager for offices.
 
 ### Installation requirements
 - [Node.js](https://nodejs.org/).
@@ -11,8 +11,8 @@ If you intend to contribute to this project, you need to install `eslint` and en
 
 ### Installation
 ```
-$ git clone https://gitlab.com/nexporter/nexporter-web.git
-$ cd nexporter-web
+$ git clone https://github.com/john555/kyv-frontend.git
+$ cd kyv-frontend
 $ yarn install
 $ yarn start
 ```
