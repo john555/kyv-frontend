@@ -13,18 +13,15 @@
 }
 
 .profileDisplay__dropdown {
+  display: none;
+  width: 18rem;
+  background: white;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
   position: absolute;
   top: 6rem;
   right: 0;
   font-size: 1.4rem;
-}
-
-.profileDisplay__dropdown {
-  display: none;
-  width: 18rem;
-  background: white;
-  padding: 1.5rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
 }
 
 .profileDisplay__dropdown--active {
@@ -38,9 +35,17 @@
   border: none;
   display: block;
   width: 100%;
-  padding: 0.8rem 0;
+  padding: 0.8rem 1rem;
 }
 
 .profileDisplay__dropdownItem--big {
   font-size: 1.2em;
+}
+
+.profileDisplay__dropdownItem--button {
+  cursor: pointer;
+
+  &:hover {
+    background: #eee;
+  }
 }

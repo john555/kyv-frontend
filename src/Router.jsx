@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import requireLogin from './hoc/requireLogin';
+
+const SecureDashboard = requireLogin(Dashboard);
 
 export default () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={Login} />
-      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/" exact component={SecureDashboard} />
     </Switch>
   </BrowserRouter>
 );

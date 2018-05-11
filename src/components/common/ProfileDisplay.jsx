@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setCookie } from '../../helpers/cookie';
+
+const onSignOutButtonClick = () => {
+  setCookie('jwt-token', '', -1);
+  window.location = '/';
+};
 
 const ProfileDisplay = props => (
   <div className="profileDisplay">
@@ -11,7 +17,12 @@ const ProfileDisplay = props => (
     />
     <div className={`profileDisplay__dropdown ${props.active ? 'profileDisplay__dropdown--active' : ''}`}>
       <div className="profileDisplay__dropdownItem profileDisplay__dropdownItem--big">{props.fullName}</div>
-      <button className="profileDisplay__dropdownItem">Sign out</button>
+      <button
+        onClick={onSignOutButtonClick}
+        className="profileDisplay__dropdownItem profileDisplay__dropdownItem--button"
+      >
+        Sign out
+      </button>
     </div>
   </div>
 );
