@@ -2,7 +2,7 @@ import { SAVE_USER_INFO } from '../types';
 
 /**
  * @export
- * @param {object} tokenInfo
+ * @param {object} userInfo
  * @returns {object} SAVE_USER_INFO action
  */
 

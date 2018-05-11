@@ -6,5 +6,6 @@ export default {
   },
   visitorLogs: {
     logs: [],
+    activeLogId: '',
   },
 };

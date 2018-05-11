@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import Header from '../components/common/Header';
 import PageContent from '../components/common/PageContent';
 import PageHeader from '../components/common/PageHeader';
@@ -8,14 +10,23 @@ import Modal from '../components/common/Modal';
 import VisitorLogForm from '../components/VisitorLogForm';
 import VisitorDetails from '../components/VisitorDetails';
 import FloatingButton from '../components/common/FloatingButton';
+import { loadVisitorLog } from '../actions/visitorLogActions';
 
 class Dashboard extends Component {
+  static propTypes = {
+    loadVisitorLog: PropTypes.func.isRequired,
+  };
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
       showForm: false,
     };
+    this.props.loadVisitorLog();
+  }
+
+  componentDidMount() {
+    console.log('+++++');
   }
 
   onFABClick = () => {
@@ -72,12 +83,15 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  userInfo: state.userInfo,
-});
+const mapStateToProps = (state) => {
+  console.log(state, 'Dashboard');
+  return ({
+    userInfo: state.userInfo,
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserDetails: () => dispatch(() => { /* fn that fetches user details :) */ }),
+  loadVisitorLog: () => dispatch(loadVisitorLog()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

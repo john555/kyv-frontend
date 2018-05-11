@@ -52,8 +52,11 @@ VisitorLog.propTypes = {
   onItemClick: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  logs: state.visitorLogs.logs,
-});
+const mapStateToProps = (state) => {
+  console.log(state, 'VisitorLog');
+  return ({
+    logs: [],
+  });
+};
 
 export default connect(mapStateToProps, null)(VisitorLog);
