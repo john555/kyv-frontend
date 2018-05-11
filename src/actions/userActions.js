@@ -1,12 +1,20 @@
-import { FETCH_USER_INFO } from '../types';
+import { SAVE_USER_INFO } from '../types';
 
 /**
  * @export
  * @param {object} tokenInfo
- * @returns {object} FETCH_USER_INFO action
+ * @returns {object} SAVE_USER_INFO action
  */
-/* eslint-disable import/prefer-default-export */
-export const fetchUserInfo = () => ({
-  type: FETCH_USER_INFO,
-  data: {},
+
+export const saveUserInfo = userInfo => ({
+  type: SAVE_USER_INFO,
+  data: {
+    id: userInfo.id,
+    fullName: userInfo.name,
+    picture: userInfo.picture,
+  },
 });
+
+export default {
+  saveUserInfo,
+};

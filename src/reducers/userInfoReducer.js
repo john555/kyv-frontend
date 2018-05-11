@@ -1,9 +1,10 @@
-import FETCH_USER_INFO from '../types';
+import { SAVE_USER_INFO } from '../types';
+import initialState from './initialState';
 
-const userInfo = (state = { fullName: 'John Doe' }, action) => {
+const userInfo = (state = initialState.userInfo, action) => {
   switch (action.type) {
-  case FETCH_USER_INFO: {
-    return { ...state, ...action.tokenInfo.UserInfo };
+  case SAVE_USER_INFO: {
+    return { ...state, ...action.data };
   }
   default: {
     return state;

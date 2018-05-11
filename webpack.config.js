@@ -26,6 +26,7 @@ if (NODE_ENV === 'development') {
   devServer = {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
+    host: 'kyv.andela.com',
     port: 3000,
     hot: true,
   };
