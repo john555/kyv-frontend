@@ -58,28 +58,34 @@ const VisitorDetails = props => (
 
 VisitorDetails.defaultProps = {
   closeModal: () => {},
+  visitorDetails: {
+    cardNumber: '',
+    visitorName: '',
+    hostName: '',
+    reason: '',
+    timeIn: '',
+    timeOut: '',
+  },
 };
 
 VisitorDetails.propTypes = {
   closeModal: PropTypes.func,
   visitorDetails: PropTypes.shape({
-    cardNumber: PropTypes.string.isRequired,
-    visitorName: PropTypes.string.isRequired,
-    hostName: PropTypes.string.isRequired,
-    reason: PropTypes.string.isRequired,
-    timeIn: PropTypes.string.isRequired,
-    timeOut: PropTypes.string.isRequired,
-  }).isRequired,
+    cardNumber: PropTypes.string,
+    visitorName: PropTypes.string,
+    hostName: PropTypes.string,
+    reason: PropTypes.string,
+    timeIn: PropTypes.string,
+    timeOut: PropTypes.string,
+  }),
 };
 
-const getVisitorDetails = logs => logs.find(log => (
-  log.id === logs.activeLogId
+const getVisitorDetails = ({ logs, activeLogId }) => logs.find(log => (
+  log.id === activeLogId
 ));
 
-const mapStateToProps = (state) => {
-  console.log(state, 'VisitorDetails');
-  return ({
-    visitorDetails: getVisitorDetails(state.visitorLogs.logs),
-  });
-};
+const mapStateToProps = state => ({
+  visitorDetails: getVisitorDetails(state.visitorLogs),
+});
+
 export default connect(mapStateToProps, null)(VisitorDetails);

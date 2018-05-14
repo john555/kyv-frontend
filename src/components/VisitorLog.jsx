@@ -7,7 +7,7 @@ const renderLogs = (logs, onItemClick) => logs.map(log => (
   <tr
     key={log.id}
     className="visitorLog__log"
-    onClick={onItemClick}
+    onClick={onItemClick(log.id)}
   >
     <td className="visitorLog__info">{log.cardNumber}</td>
     <td className="visitorLog__info">{log.visitorName}</td>
@@ -52,11 +52,8 @@ VisitorLog.propTypes = {
   onItemClick: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state, 'VisitorLog');
-  return ({
-    logs: [],
-  });
-};
+const mapStateToProps = state => ({
+  logs: state.visitorLogs.logs,
+});
 
 export default connect(mapStateToProps, null)(VisitorLog);

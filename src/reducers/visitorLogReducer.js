@@ -16,6 +16,7 @@ const visitorLogReducer = (state = initialState.visitorLogs, action) => {
     return {
       ...state,
       logs: action.data.logs,
+      activeLogId: '',
     };
   }
   default: {
@@ -24,6 +25,4 @@ const visitorLogReducer = (state = initialState.visitorLogs, action) => {
   }
 };
 
-export default {
-  visitorLogReducer,
-};
+export default visitorLogReducer;

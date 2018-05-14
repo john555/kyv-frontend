@@ -10,11 +10,12 @@ import Modal from '../components/common/Modal';
 import VisitorLogForm from '../components/VisitorLogForm';
 import VisitorDetails from '../components/VisitorDetails';
 import FloatingButton from '../components/common/FloatingButton';
-import { loadVisitorLog } from '../actions/visitorLogActions';
+import { loadVisitorLog, setActiveVisitorLog } from '../actions/visitorLogActions';
 
 class Dashboard extends Component {
   static propTypes = {
     loadVisitorLog: PropTypes.func.isRequired,
+    setActiveVisitorLog: PropTypes.func.isRequired,
   };
   constructor(props) {
     super(props);
@@ -25,19 +26,16 @@ class Dashboard extends Component {
     this.props.loadVisitorLog();
   }
 
-  componentDidMount() {
-    console.log('+++++');
-  }
-
   onFABClick = () => {
     this.setState({ showForm: true });
     this.showModal();
   };
 
-  onVisitorLogItemClick = () => {
+  onVisitorLogItemClick = id => () => {
+    this.props.setActiveVisitorLog(id);
     this.setState({ showForm: false });
     this.showModal();
-  }
+  };
 
   showModal = () => {
     document.body.classList.add('no-scroll');
@@ -83,15 +81,13 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state, 'Dashboard');
-  return ({
-    userInfo: state.userInfo,
-  });
-};
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+});
 
 const mapDispatchToProps = dispatch => ({
   loadVisitorLog: () => dispatch(loadVisitorLog()),
+  setActiveVisitorLog: id => dispatch(setActiveVisitorLog(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
