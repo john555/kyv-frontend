@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import Button from './common/Button';
 import DeleteButton from './common/DeleteButton';
 
 const formatTimeOut = timeOut => (
-  timeOut === '' ? '--:--' : timeOut
+  timeOut === '' ? '--:--' : moment(timeOut).format('h:mm A')
 );
 
 const VisitorDetails = props => (
@@ -37,7 +38,7 @@ const VisitorDetails = props => (
       <div className="visitorDetails__contentGroup">
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Time in</span>
-          <span className="visitorDetails__value visitorDetails__value--big">{props.visitorDetails.timeIn}</span>
+          <span className="visitorDetails__value visitorDetails__value--big">{formatTimeOut(props.visitorDetails.timeIn)}</span>
         </div>
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Time out</span>
