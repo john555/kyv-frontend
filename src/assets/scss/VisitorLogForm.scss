@@ -1,6 +1,12 @@
 .visitorLogForm {
   width: 55rem;
   padding: 2rem;
+  position: relative;
+}
+
+.visitorLogForm__progress {
+  position: absolute;
+  right: 1rem;
 }
 
 .visitorLogForm__heading {
@@ -8,8 +14,34 @@
   font-weight: normal;
 }
 
-.visitorLogForm__content {
+.visitorLogForm__contentWrapper {
   padding: 3rem 0 6rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.visitorLogForm__content {
+  width: 200%;
+  transition: transform 0.2s ease-in-out;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  &.visitorLogForm__content--1 {
+    transform: translateX(0);
+  }
+
+  &.visitorLogForm__content--2 {
+    transform: translateX(-50%);
+  }
+}
+
+.visitorLogForm__details,
+.visitorLogForm__signature {
+  width: 50%;
+  float: left;
 }
 
 .visitorLogForm__field {
