@@ -5,7 +5,7 @@ export default {
     picture: '',
   },
   visitorLogs: {
-    logs: [],
+    logs: {},
     activeLogId: '',
   },
 };

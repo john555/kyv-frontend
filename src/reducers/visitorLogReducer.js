@@ -13,9 +13,13 @@ const visitorLogReducer = (state = initialState.visitorLogs, action) => {
     };
   }
   case LOAD_VISITOR_LOG_SUCCESS: {
+    const logs = {};
+    for (let i = 0; i < action.data.logs.length; i += 1) {
+      logs[action.data.logs[i].id] = action.data.logs[i];
+    }
     return {
       ...state,
-      logs: action.data.logs,
+      logs,
       activeLogId: '',
     };
   }

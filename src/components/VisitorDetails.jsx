@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import Button from './common/Button';
 import DeleteButton from './common/DeleteButton';
-
-const formatTimeOut = timeOut => (
-  timeOut === '' ? '--:--' : moment(timeOut).format('h:mm A')
-);
+import { formatTime } from '../helpers/format';
 
 const VisitorDetails = props => (
   <section className="visitorDetails">
@@ -38,11 +34,11 @@ const VisitorDetails = props => (
       <div className="visitorDetails__contentGroup">
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Time in</span>
-          <span className="visitorDetails__value visitorDetails__value--big">{formatTimeOut(props.visitorDetails.timeIn)}</span>
+          <span className="visitorDetails__value visitorDetails__value--big">{formatTime(props.visitorDetails.timeIn)}</span>
         </div>
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Time out</span>
-          <span className="visitorDetails__value visitorDetails__value--big">{formatTimeOut(props.visitorDetails.timeOut)}</span>
+          <span className="visitorDetails__value visitorDetails__value--big">{formatTime(props.visitorDetails.timeOut)}</span>
         </div>
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Signature</span>
@@ -81,9 +77,7 @@ VisitorDetails.propTypes = {
   }),
 };
 
-const getVisitorDetails = ({ logs, activeLogId }) => logs.find(log => (
-  log.id === activeLogId
-));
+const getVisitorDetails = ({ logs, activeLogId }) => logs[activeLogId];
 
 const mapStateToProps = state => ({
   visitorDetails: getVisitorDetails(state.visitorLogs),

@@ -2,22 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from '../components/common/Button';
+import { formatTime } from '../helpers/format';
 
-const renderLogs = (logs, onItemClick) => logs.map(log => (
-  <tr
-    key={log.id}
-    className="visitorLog__log"
-    onClick={onItemClick(log.id)}
-  >
-    <td className="visitorLog__info">{log.cardNumber}</td>
-    <td className="visitorLog__info">{log.visitorName}</td>
-    <td className="visitorLog__info">{log.hostName}</td>
-    <td className="visitorLog__info">10:03 AM</td>
-    <td className="visitorLog__info">
-      <Button className="visitorLog__button">Sign out</Button>
-    </td>
-  </tr>
-));
+const renderLogs = (logs, onItemClick) => {
+  const result = [];
+  Object.keys(logs).forEach((key) => {
+    /* eslint-disable */
+    result.push(
+      <tr
+        key={logs[key].id}
+        className="visitorLog__log"
+        onClick={onItemClick(logs[key].id)}
+      >
+        <td className="visitorLog__info">{logs[key].cardNumber}</td>
+        <td className="visitorLog__info">{logs[key].visitorName}</td>
+        <td className="visitorLog__info">{logs[key].hostName}</td>
+        <td className="visitorLog__info">{formatTime(logs[key].timeIn)}</td>
+        <td className="visitorLog__info">
+          <Button className="visitorLog__button">Sign out</Button>
+        </td>
+      </tr>
+    );
+    /* eslint-enable */
+  });
+
+  return result;
+};
 
 const VisitorLog = props => (
   <table className="visitorLog">
@@ -36,19 +46,20 @@ const VisitorLog = props => (
   </table>
 );
 
+
+// id: PropTypes.string.isRequired,
+// cardNumber: PropTypes.string.isRequired,
+// visitorName: PropTypes.string.isRequired,
+// hostName: PropTypes.string.isRequired,
+// timeIn: PropTypes.string.isRequired,
+// timeOut: PropTypes.string.isRequired,
+
 VisitorLog.defaultProps = {
   onItemClick: () => {},
 };
 
 VisitorLog.propTypes = {
-  logs: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    cardNumber: PropTypes.string.isRequired,
-    visitorName: PropTypes.string.isRequired,
-    hostName: PropTypes.string.isRequired,
-    timeIn: PropTypes.string.isRequired,
-    timeOut: PropTypes.string.isRequired,
-  })).isRequired,
+  logs: PropTypes.shape({}).isRequired,
   onItemClick: PropTypes.func,
 };
 
