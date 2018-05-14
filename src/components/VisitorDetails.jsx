@@ -6,6 +6,15 @@ import Button from './common/Button';
 import DeleteButton from './common/DeleteButton';
 import { formatTime } from '../helpers/format';
 
+const renderSignOutButton = (timeOut) => {
+  if (timeOut === '') {
+    return (
+      <Button className="visitorDetails__button">Sign out</Button>
+    );
+  }
+  return '';
+};
+
 const VisitorDetails = props => (
   <section className="visitorDetails">
     <h1 className="visitorDetails__heading">Visitor Details</h1>
@@ -28,7 +37,7 @@ const VisitorDetails = props => (
         </div>
         <div className="visitorDetails__detail">
           <span className="visitorDetails__label">Reason for visit</span>
-          <span className="visitorDetails__value">{props.visitorDetails.reason}</span>
+          <span className="visitorDetails__value">{props.visitorDetails.purpose}</span>
         </div>
       </div>
       <div className="visitorDetails__contentGroup">
@@ -48,7 +57,7 @@ const VisitorDetails = props => (
     </div>
     <div className="visitorDetails__options">
       <Button className="visitorDetails__button" onClick={props.closeModal}>Close</Button>
-      <Button className="visitorDetails__button">Sign out</Button>
+      {renderSignOutButton(props.visitorDetails.timeOut)}
     </div>
   </section>
 );
@@ -71,7 +80,7 @@ VisitorDetails.propTypes = {
     cardNumber: PropTypes.string,
     visitorName: PropTypes.string,
     hostName: PropTypes.string,
-    reason: PropTypes.string,
+    purpose: PropTypes.string,
     timeIn: PropTypes.string,
     timeOut: PropTypes.string,
   }),

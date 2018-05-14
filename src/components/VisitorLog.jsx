@@ -4,6 +4,20 @@ import { connect } from 'react-redux';
 import Button from '../components/common/Button';
 import { formatTime } from '../helpers/format';
 
+const renderTimeOut = (timeOut) => {
+  if (timeOut === '') {
+    return (
+      <Button
+        className="visitorLog__button"
+        onClick={event => event.stopPropagation()}
+      >
+        Sign out
+      </Button>
+    );
+  }
+  return formatTime(timeOut);
+};
+
 const renderLogs = (logs, onItemClick) => {
   const result = [];
   Object.keys(logs).forEach((key) => {
@@ -19,7 +33,7 @@ const renderLogs = (logs, onItemClick) => {
         <td className="visitorLog__info">{logs[key].hostName}</td>
         <td className="visitorLog__info">{formatTime(logs[key].timeIn)}</td>
         <td className="visitorLog__info">
-          <Button className="visitorLog__button">Sign out</Button>
+          {renderTimeOut(logs[key].timeOut)}
         </td>
       </tr>
     );
