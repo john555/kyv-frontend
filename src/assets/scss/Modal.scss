@@ -38,3 +38,24 @@
   transform: scale(0.9);
   transition: transform 0.2s ease-in-out;
 }
+
+.modal__close {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  width: 5.5rem;
+  padding: 0.5rem 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal__closeIcon {
+  width: 80%;
+  stroke: #999;
+}
+
+.modal__shortcut {
+  font-size: 1.4rem;
+  text-transform: lowercase;
+  opacity: 0.3;
+}

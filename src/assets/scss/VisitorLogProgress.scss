@@ -8,7 +8,6 @@
   align-items: center;
   font-size: 1.2rem;
   width: 10rem;
-  opacity: 0.6;
 }
 
 .visitorLogProgress__stageNumber {
@@ -17,7 +16,7 @@
   line-height: 3.5rem;
   border-radius: 50%;
   text-align: center;
-  background: #aaa;
+  background: #ddd;
   font-size: 1.4rem;
   color: white;
 }
@@ -28,10 +27,16 @@
   height: 0.2rem;
   width: 6.5rem;
   transform: translate3d(-5rem, 1.75rem, 0);
-  background: #aaa;
+  background: #ddd;
 }
 
 .visitorLogProgress--stage1 .visitorLogProgress__stage:nth-child(1),
 .visitorLogProgress--stage2 .visitorLogProgress__stage:nth-child(2) {
-  opacity: 1;
+  .visitorLogProgress__stageNumber {
+    background: #bada55;
+  }
+
+  &:before {
+    background: #bada55;
+  }
 }
