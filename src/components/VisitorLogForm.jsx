@@ -108,7 +108,7 @@ class VisitorLogForm extends Component {
         <div className="visitorLogForm__options">
           {this.renderPreviousButton()}
           <Button onClick={this.handleSubmit} className="visitorDetails__button">
-            {this.state.stage === 1 ? 'Next' : 'Add' }
+            {this.state.stage === 1 ? 'Next' : 'Add'}
           </Button>
         </div>
       </div>
