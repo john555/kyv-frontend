@@ -1,13 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+import store from './store';
 import Router from './Router';
 import './assets/scss/index.scss';
 
 const { NODE_ENV } = process.env;
 
+console.log('State:', store.getState());
+
 const mount = (Component) => {
   render(
-    <Component />,
+    <Provider store={store}>
+      <Component />
+    </Provider>,
     document.getElementById('root'),
   );
 };

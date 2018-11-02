@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../components/common/Button';
 
@@ -51,4 +52,8 @@ VisitorLog.propTypes = {
   onItemClick: PropTypes.func,
 };
 
-export default VisitorLog;
+const mapStateToProps = state => ({
+  logs: state.visitorLogs,
+});
+
+export default connect(mapStateToProps)(VisitorLog);

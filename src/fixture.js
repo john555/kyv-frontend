@@ -1,4 +1,4 @@
-const logs = [
+export const visitorLogs = [
   {
     cardNumber: '0010',
     hostName: 'Julius Onen',
@@ -221,4 +221,4 @@ const logs = [
   },
 ];
 
-export default logs;
+export default visitorLogs;

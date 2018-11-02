@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Modal = props => (
   <div
     className={`modal ${props.active ? 'modal--active' : ''}`}
-    onClick={props.closeModal}
+    onClick={props.toggleModal}
     aria-hidden="true"
   >
     <div
@@ -24,7 +25,17 @@ Modal.defaultProps = {
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
   active: PropTypes.bool,
-  closeModal: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
-export default Modal;
+const mapStateToProps = state => ({
+  active: state.displayModal,
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleModal: () => {
+    dispatch({ type: 'TOGGLE_MODAL' });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

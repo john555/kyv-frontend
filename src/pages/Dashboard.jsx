@@ -1,42 +1,36 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Header from '../components/common/Header';
 import PageContent from '../components/common/PageContent';
 import PageHeader from '../components/common/PageHeader';
 import VisitorLog from '../components/VisitorLog';
-import visitorLogs from '../fixture';
 import Modal from '../components/common/Modal';
 import VisitorLogForm from '../components/VisitorLogForm';
 import VisitorDetails from '../components/VisitorDetails';
 import FloatingButton from '../components/common/FloatingButton';
 
 class Dashboard extends Component {
+  static propTypes = {
+    toggleModal: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      visitorLogs,
-      showModal: false,
       showForm: false,
     };
   }
 
   onFABClick = () => {
     this.setState({ showForm: true });
-    this.showModal();
+    this.props.toggleModal();
   };
 
   onVisitorLogItemClick = () => {
     this.setState({ showForm: false });
-    this.showModal();
-  }
-
-  showModal = () => {
-    document.body.classList.add('no-scroll');
-    this.setState({ showModal: true });
-  }
-
-  hideModal = () => {
-    document.body.classList.remove('no-scroll');
-    this.setState({ showModal: false });
+    this.props.toggleModal();
   }
 
   renderFAB = () => {
@@ -59,12 +53,9 @@ class Dashboard extends Component {
         <Header />
         <PageContent>
           <PageHeader title="Visitor Logs." />
-          <VisitorLog logs={this.state.visitorLogs} onItemClick={this.onVisitorLogItemClick} />
+          <VisitorLog onItemClick={this.onVisitorLogItemClick} />
         </PageContent>
-        <Modal
-          active={this.state.showModal}
-          closeModal={this.hideModal}
-        >
+        <Modal>
           {this.renderModalContent()}
         </Modal>
         {this.renderFAB()}
@@ -73,4 +64,10 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapDispatchToProps = dispatch => ({
+  toggleModal: () => {
+    dispatch({ type: 'TOGGLE_MODAL' });
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Dashboard);
